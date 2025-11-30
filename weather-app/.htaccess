@@ -1,0 +1,11 @@
+# Ensure .json files are served with application/json
+AddType application/json .json
+<IfModule mod_headers.c>
+  <FilesMatch "\.json$">
+    Header set Content-Type "application/json; charset=UTF-8"
+  </FilesMatch>
+</IfModule>
+
+# Prevent DirectoryIndex fallback from serving an HTML page for missing files
+DirectoryIndex disabled
+ErrorDocument 404 "Not Found"
